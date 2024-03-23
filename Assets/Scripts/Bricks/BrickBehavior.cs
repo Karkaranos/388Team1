@@ -7,7 +7,7 @@ public class BrickBehavior : MonoBehaviour
     public bool isKey = false;
     private BrickManagers BM;
 
-    [SerializeField] private Sprite KeyBrickSprite;
+    public Sprite KeyBrickSprite;
     [SerializeField] private Sprite NormalBrickSprite;
     private void Start()
     {
@@ -18,7 +18,7 @@ public class BrickBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            BM.keyDestroyed(gameObject);
+            DestroyThisBrick();
         }
     }
 
@@ -32,5 +32,17 @@ public class BrickBehavior : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = NormalBrickSprite;
         }
+        gameObject.AddComponent<PolygonCollider2D>();
+    }
+
+    public void DropPowerup()
+    {
+        //handle dropping powerups here
+    }
+
+    public void DestroyThisBrick()
+    {
+        DropPowerup();
+        BM.keyDestroyed(gameObject);
     }
 }

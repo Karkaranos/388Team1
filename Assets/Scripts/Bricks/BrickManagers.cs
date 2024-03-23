@@ -58,6 +58,16 @@ public class BrickManagers : MonoBehaviour
 
     public void keyDestroyed(GameObject key)
     {
-        
+        if(key.GetComponent<BrickBehavior>().isKey)
+        {
+            keysDestroyed++;
+            if (keysDestroyed >= keys)
+            {
+                //handle end of level here
+            }
+        }
+        Destroy(key);
     }
+
+    
 }
