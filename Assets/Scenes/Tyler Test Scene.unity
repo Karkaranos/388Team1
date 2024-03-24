@@ -687,6 +687,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8953150051979412958, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
   m_PrefabInstance: {fileID: 1883380745}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> 45bac85f18a667f0f2a20d45c8e6677d0e3b9e34
+>>>>>>> Stashed changes
 --- !u!1 &988587327
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,6 +772,62 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 11.125832}
   m_EdgeRadius: 0
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+--- !u!1 &1005554186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1005554188}
+  - component: {fileID: 1005554187}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1005554187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005554186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9ff0d84e384d9499e5806e11d3f5bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoseConditionIsPlayerLivesIfTrue: 0
+  PlayerLives: 3
+  MaxHitCounter: 10
+  currentHitCounter: 0
+  obtainedPowerups: 
+--- !u!4 &1005554188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005554186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> Stashed changes
+=======
+>>>>>>> 45bac85f18a667f0f2a20d45c8e6677d0e3b9e34
+>>>>>>> Stashed changes
 --- !u!1 &1023914598 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8953150051979412958, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
@@ -1454,6 +1518,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> 45bac85f18a667f0f2a20d45c8e6677d0e3b9e34
+>>>>>>> Stashed changes
 --- !u!1 &1800090218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,7 +1545,15 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< Updated upstream
   m_IsActive: 0
+=======
+<<<<<<< HEAD
+  m_IsActive: 1
+=======
+  m_IsActive: 0
+>>>>>>> 45bac85f18a667f0f2a20d45c8e6677d0e3b9e34
+>>>>>>> Stashed changes
 --- !u!114 &1800090219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1487,6 +1567,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+  isBig: 0
+  BigBallTimer: 0
+  BigBallMultiplier: 0
+  BigBallInventory: 0
+=======
+>>>>>>> 45bac85f18a667f0f2a20d45c8e6677d0e3b9e34
+>>>>>>> Stashed changes
 --- !u!58 &1800090220
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1616,6 +1706,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> Stashed changes
+=======
+>>>>>>> 45bac85f18a667f0f2a20d45c8e6677d0e3b9e34
+>>>>>>> Stashed changes
 --- !u!1001 &1883091213
 PrefabInstance:
   m_ObjectHideFlags: 0
