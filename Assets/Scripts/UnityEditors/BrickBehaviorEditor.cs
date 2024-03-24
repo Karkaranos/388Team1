@@ -51,7 +51,7 @@ public class BrickBehaviorEditor : Editor
             "Refrences");
         if (showRefrences)
         {
-            brickBehav.KeyBrickSprite = (Sprite)EditorGUILayout.ObjectField("Key Brick Sprite", KeyBrickSprite.objectReferenceValue, typeof(Sprite), 
+            brickBehav.KeyBrickSprite = (Sprite)EditorGUILayout.ObjectField("Key Brick Sprite", brickBehav.KeyBrickSprite, typeof(Sprite), 
                 false, GUILayout.Height(EditorGUIUtility.singleLineHeight));
 
             brickBehav.NormalBrickSprite = (Sprite)EditorGUILayout.ObjectField("Normal Brick Sprite", brickBehav.NormalBrickSprite, typeof(Sprite),
