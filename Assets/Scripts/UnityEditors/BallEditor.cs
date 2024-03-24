@@ -21,7 +21,7 @@ public class BallEditor : Editor
     public override void OnInspectorGUI()
     {
         //draw the default inspector
-        //base.OnInspectorGUI();
+        base.OnInspectorGUI();
         GUILayout.Space(4);
         BBehav.moveSpeed = EditorGUILayout.FloatField("Speed", BBehav.moveSpeed);
         GUILayout.Space(4);

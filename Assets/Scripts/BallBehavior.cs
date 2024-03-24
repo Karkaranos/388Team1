@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallBehavior : MonoBehaviour
@@ -26,8 +27,7 @@ public class BallBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            StopBall();
-            Kicked();
+            StopBall(collision.transform.position);
         }
 
         if (collision.gameObject.tag == "Deathbox")
@@ -58,12 +58,25 @@ public class BallBehavior : MonoBehaviour
     public void StopBall()
     {
         rb.velocity = Vector2.zero;
+        Debug.Log("Stopped");
+
     }
 
-    public void Kicked()
+    public void StopBall(Vector2 hitPoint)
     {
-
+        rb.velocity = Vector2.zero;
+        transform.position = new Vector2(hitPoint.x + 0.8f, hitPoint.y);
+        Debug.Log("Stopped");
+        
     }
+
+    /*public void Kicked(GameManager.PowerupType type)
+    {
+        switch (type)
+        {
+
+        }
+    }*/
 
     public IEnumerator BigBall()
     {
