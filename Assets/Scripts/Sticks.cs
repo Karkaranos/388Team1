@@ -132,16 +132,21 @@ public class Sticks : MonoBehaviour
 
     public IEnumerator Move()
     {
-        if (Left)
+        while (true)
         {
-            float Direction = MoveLeft.ReadValue<float>();
-            MyRB.velocity = new Vector2(0, speed * Direction);
+            if (Left)
+            {
+                float Direction = MoveLeft.ReadValue<float>();
+                transform.position = transform.position + new Vector3(0, Direction * speed * Time.deltaTime, 0);
+            }
+            else
+            {
+                float Direction = MoveRight.ReadValue<float>();
+                transform.position = transform.position + new Vector3(0, Direction * speed * Time.deltaTime, 0);
+            }
+            yield return null;
+
         }
-        else
-        {
-            float Direction = MoveRight.ReadValue<float>();
-            MyRB.velocity = new Vector2(0, speed * Direction);
-        }
-        yield return null;
+
     }
 }
