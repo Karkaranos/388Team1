@@ -23,7 +23,7 @@ public class BallEditor : Editor
         //draw the default inspector
         //base.OnInspectorGUI();
         GUILayout.Space(4);
-         BBehav.moveSpeed = EditorGUILayout.FloatField("Speed", BBehav.moveSpeed);
+        BBehav.moveSpeed = EditorGUILayout.FloatField("Speed", BBehav.moveSpeed);
         GUILayout.Space(4);
         
         GUILayout.Space(4);
