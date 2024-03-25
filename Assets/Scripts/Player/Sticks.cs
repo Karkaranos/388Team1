@@ -19,6 +19,8 @@ public class Sticks : MonoBehaviour
     public PlayerInput MyPlayerInput;
     public Rigidbody2D MyRB;
 
+    public GameObject[] players;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,7 +113,10 @@ public class Sticks : MonoBehaviour
 
     private void Attack_R(InputAction.CallbackContext obj)
     {
-        Debug.Log("Attack R");
+        foreach(GameObject player in players)
+        {
+            player.GetComponent<Players>().kick();
+        }
     }
 
     private void Stop_L(InputAction.CallbackContext obj)
@@ -127,7 +132,10 @@ public class Sticks : MonoBehaviour
 
     private void Attack_L(InputAction.CallbackContext obj)
     {
-        Debug.Log("attack L");
+        foreach (GameObject player in players)
+        {
+            player.GetComponent<Players>().kick();
+        }
     }
 
     public IEnumerator Move()

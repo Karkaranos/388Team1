@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Players : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool Kickable;
+    public GameObject KickBox;
 
-    // Update is called once per frame
-    void Update()
+    public void kick()
     {
-        
+        if(Kickable)
+        {
+            KickBox.GetComponent<KickBox>().Kickball();
+        }
     }
 }
