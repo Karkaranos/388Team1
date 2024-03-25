@@ -37,13 +37,13 @@ public class Sticks : MonoBehaviour
 
         if (Left)
         {
-            AttackLeft.performed += Attack_L;
+            AttackLeft.started += Attack_L;
             MoveLeft.started += Move_L;
             MoveLeft.canceled += Stop_L;
         }
         else
         {
-            AttackRight.performed += Attack_R;
+            AttackRight.started += Attack_R;
             MoveRight.started += Move_R;
             MoveRight.canceled += Stop_R;
         }
@@ -85,13 +85,13 @@ public class Sticks : MonoBehaviour
     {
         if (Left)
         {
-            AttackLeft.performed -= Attack_L;
+            AttackLeft.started -= Attack_L;
             MoveLeft.started -= Move_L;
             MoveLeft.canceled -= Stop_L;
         }
         else
         {
-            AttackRight.performed -= Attack_R;
+            AttackRight.started -= Attack_R;
             MoveRight.started -= Move_R;
             MoveRight.canceled -= Stop_R;
         }
@@ -145,8 +145,6 @@ public class Sticks : MonoBehaviour
                 transform.position = transform.position + new Vector3(0, Direction * speed * Time.deltaTime, 0);
             }
             yield return null;
-
         }
-
     }
 }
