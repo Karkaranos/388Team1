@@ -19,6 +19,8 @@ public class Sticks : MonoBehaviour
     public PlayerInput MyPlayerInput;
     public Rigidbody2D MyRB;
 
+    public GameObject[] players;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,13 +39,13 @@ public class Sticks : MonoBehaviour
 
         if (Left)
         {
-            AttackLeft.performed += Attack_L;
+            AttackLeft.started += Attack_L;
             MoveLeft.started += Move_L;
             MoveLeft.canceled += Stop_L;
         }
         else
         {
-            AttackRight.performed += Attack_R;
+            AttackRight.started += Attack_R;
             MoveRight.started += Move_R;
             MoveRight.canceled += Stop_R;
         }
@@ -85,13 +87,13 @@ public class Sticks : MonoBehaviour
     {
         if (Left)
         {
-            AttackLeft.performed -= Attack_L;
+            AttackLeft.started -= Attack_L;
             MoveLeft.started -= Move_L;
             MoveLeft.canceled -= Stop_L;
         }
         else
         {
-            AttackRight.performed -= Attack_R;
+            AttackRight.started -= Attack_R;
             MoveRight.started -= Move_R;
             MoveRight.canceled -= Stop_R;
         }
@@ -111,7 +113,10 @@ public class Sticks : MonoBehaviour
 
     private void Attack_R(InputAction.CallbackContext obj)
     {
-        Debug.Log("Attack R");
+        foreach(GameObject player in players)
+        {
+            player.GetComponent<Players>().kick();
+        }
     }
 
     private void Stop_L(InputAction.CallbackContext obj)
@@ -127,7 +132,10 @@ public class Sticks : MonoBehaviour
 
     private void Attack_L(InputAction.CallbackContext obj)
     {
-        Debug.Log("attack L");
+        foreach (GameObject player in players)
+        {
+            player.GetComponent<Players>().kick();
+        }
     }
 
     public IEnumerator Move()
@@ -145,8 +153,6 @@ public class Sticks : MonoBehaviour
                 transform.position = transform.position + new Vector3(0, Direction * speed * Time.deltaTime, 0);
             }
             yield return null;
-
         }
-
     }
 }
