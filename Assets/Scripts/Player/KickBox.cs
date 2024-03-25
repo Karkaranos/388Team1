@@ -30,6 +30,7 @@ public class KickBox : MonoBehaviour
     {
         var kickDirection = ball.transform.position - Player.transform.position;
         kickDirection.Normalize();
+        ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         ball.GetComponent<Rigidbody2D>().AddForce(kickDirection * KickStrength, ForceMode2D.Impulse);
     }
 }
