@@ -16,6 +16,10 @@ public class BrickManagers : MonoBehaviour
     private int keysDestroyed;
     [SerializeField, Tooltip("used for checking how many bricks are spawned")] private int bricksSpawned;
     [SerializeField, Tooltip("list of key bricks")] private List<GameObject> keyBrickList;
+
+    [SerializeField, Tooltip("This is where you choose how big the comet's explosion is")]
+    private float cometExplosionRadius;
+
     // Start is called before the first frame update
     void Start()
     {

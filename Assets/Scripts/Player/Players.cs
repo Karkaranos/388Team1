@@ -6,7 +6,7 @@ public class Players : MonoBehaviour
 {
     public bool Kickable;
     public GameObject KickBox;
-
+    public GameManager.LastingPowerupType currentPowerup;
     public void kick()
     {
         if(Kickable)

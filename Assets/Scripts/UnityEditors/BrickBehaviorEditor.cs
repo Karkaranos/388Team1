@@ -27,7 +27,7 @@ public class BrickBehaviorEditor : Editor
         //draw the default inspector
         //base.OnInspectorGUI();
 
-        brickBehav.heldPowerup = (GameManager.PowerupType)EditorGUILayout.EnumPopup("Powerup held in this brick", brickBehav.heldPowerup);
+        brickBehav.heldLastingPowerup = (GameManager.LastingPowerupType)EditorGUILayout.EnumPopup("Powerup held in this brick", brickBehav.heldLastingPowerup);
 
         showButtons = EditorGUILayout.Foldout(showButtons,
             "Buttons");
