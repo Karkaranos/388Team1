@@ -12,6 +12,10 @@ public class BallBehavior : MonoBehaviour
     public float BigBallTimer;
     public float BigBallMultiplier;
 
+    public LayerMask brickLayer;
+    public GameManager.LastingPowerupType currentPowerup;
+    public float cometExplosionRadius;
+
     //this is the number of big ball powerups the player currently has.
     //does not include the active big ball powerup if the player has one
     public int BigBallInventory;
@@ -25,17 +29,36 @@ public class BallBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             StopBall(collision.transform.position);
         }
 
-        if (collision.gameObject.tag == "Deathbox")
+        if (collision.gameObject.CompareTag("Deathbox"))
         {
             gm.LoseLife();
             StopBall();
             transform.position = Vector2.zero;
         }
+
+        if (collision.gameObject.CompareTag("Brick") && currentPowerup == GameManager.LastingPowerupType.Comet)
+        {
+            currentPowerup = GameManager.LastingPowerupType.None;
+            Explode();
+        }
+    }
+
+    public void Explode()
+    {
+        Collider2D[] bricksToExplode = Physics2D.OverlapCircleAll(transform.position, cometExplosionRadius, brickLayer);
+        foreach (Collider2D col in bricksToExplode)
+        {
+            if (col.gameObject.GetComponent<BrickBehavior>() != null)
+            {
+                col.gameObject.GetComponent<BrickBehavior>().DestroyThisBrick();
+            }
+        }
+
     }
     public void Launch()
     {

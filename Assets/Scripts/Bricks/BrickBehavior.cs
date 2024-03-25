@@ -9,7 +9,8 @@ public class BrickBehavior : MonoBehaviour
 
     //these are all public to work with the custom editor
     public bool isKey = false;
-    public GameManager.PowerupType heldPowerup;
+    public GameManager.LastingPowerupType heldLastingPowerup;
+    public GameManager.LimitedPowerupType heldLimitedPowerup;
     public Sprite KeyBrickSprite;
     public Sprite NormalBrickSprite;
 
@@ -44,7 +45,8 @@ public class BrickBehavior : MonoBehaviour
     {
 
         //handle dropping powerups here
-        gm.ObtainedPowerup(heldPowerup);
+        gm.ObtainedPowerup(heldLastingPowerup);
+        gm.ObtainedPowerup(heldLimitedPowerup);
 
     }
 

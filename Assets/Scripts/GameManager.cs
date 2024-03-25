@@ -11,14 +11,20 @@ public class GameManager : MonoBehaviour
 
     public int MaxHitCounter = 10;
     [HideInInspector] public int currentHitCounter = 0;
-    [HideInInspector] public enum PowerupType
+    [HideInInspector] public enum LastingPowerupType
     {
         None,
-        Comet,
-        ExtraLife,
-        BiggerBall
+        Comet
     }
-    [SerializeField] private List<PowerupType> obtainedPowerups = new List<PowerupType>();
+
+    [HideInInspector] public enum LimitedPowerupType
+    {
+        None,
+        BiggerBall,
+        ExtraLife
+    }
+
+    [SerializeField] private List<LastingPowerupType> obtainedLingeringPowerups = new List<LastingPowerupType>();
 
     public void LoseLife()
     {
@@ -52,22 +58,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ObtainedPowerup(PowerupType type)
+    public void ObtainedPowerup(LastingPowerupType type)
     {
-        if (type != PowerupType.None)
+        if (type != LastingPowerupType.None)
         {
             //the limited use powerups
-            if (type == PowerupType.Comet)
+            if (type == LastingPowerupType.Comet)
             {
-                obtainedPowerups.Add(type);
-                obtainedPowerups.Sort();
+                obtainedLingeringPowerups.Add(type);
+                obtainedLingeringPowerups.Sort();
             }
+        }
+    }
+
+    public void ObtainedPowerup(LimitedPowerupType type)
+    {
+        if (type != LimitedPowerupType.None)
+        {
             switch (type)
             {
-                case PowerupType.ExtraLife:
+                case LimitedPowerupType.ExtraLife:
                     PlayerLives++;
                     break;
-                case PowerupType.BiggerBall:
+                case LimitedPowerupType.BiggerBall:
                     BallBehavior bBehav = FindObjectOfType<BallBehavior>();
                     bBehav.BigBallInventory++;
                     if (!bBehav.isBig)

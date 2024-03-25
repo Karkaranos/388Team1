@@ -9,7 +9,7 @@ public class GameManagerEditor : Editor
 {
     private GameManager gm;
 
-    private GameManager.PowerupType type;
+    private GameManager.LastingPowerupType type;
 
     private void OnEnable()
     {
@@ -39,7 +39,7 @@ public class GameManagerEditor : Editor
         //EditorUtility.Show(serializedObject.FindProperty("obtainedPowerups"), false);
 
         GUILayout.Space(4);
-        type = (GameManager.PowerupType)EditorGUILayout.EnumPopup("Type of powerup to obtain", type);
+        type = (GameManager.LastingPowerupType)EditorGUILayout.EnumPopup("Type of powerup to obtain", type);
         GUILayout.Space(4);
         if (GUILayout.Button("Gain the above powerup"))
         {
