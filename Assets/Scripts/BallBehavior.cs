@@ -44,14 +44,16 @@ public class BallBehavior : MonoBehaviour
 
     public void Launch(Vector2 direction)
     {
-       /* if (direction.x > 1)
-        {
-            direction.x = 1;
-        }
-        if (direction.x < -1)
-        {
-            direction.x = -1;
-        }*/
+        /* if (direction.x > 1)
+         {
+             direction.x = 1;
+         }
+         if (direction.x < -1)
+         {
+             direction.x = -1;
+         }*/
+
+        direction.Normalize();
         rb.velocity = direction * moveSpeed;
     }
 
@@ -65,7 +67,7 @@ public class BallBehavior : MonoBehaviour
     public void StopBall(Vector2 hitPoint)
     {
         rb.velocity = Vector2.zero;
-        transform.position = new Vector2(hitPoint.x + 0.8f, hitPoint.y);
+        transform.position = new Vector2(hitPoint.x + 1f, hitPoint.y);
         Debug.Log("Stopped");
         
     }
