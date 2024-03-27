@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
 
     public int MaxHitCounter = 10;
     [HideInInspector] public int currentHitCounter = 0;
+
+
+
     [HideInInspector] public enum LastingPowerupType
     {
         None,
@@ -24,7 +27,20 @@ public class GameManager : MonoBehaviour
         ExtraLife
     }
 
-    [SerializeField] private List<LastingPowerupType> obtainedLingeringPowerups = new List<LastingPowerupType>();
+    public List<LastingPowerupType> obtainedLingeringPowerups = new List<LastingPowerupType>();
+    public List<LastingPowerupType> unusedLingeringPowerups = new List<LastingPowerupType>();
+    public LastingPowerupType[] UsedPowerups = new LastingPowerupType[5];
+
+
+    private void awake()
+    {
+        GameObject[] managers = GameObject.FindGameObjectsWithTag("GameController");
+        if(managers.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     public void LoseLife()
     {
@@ -35,7 +51,6 @@ public class GameManager : MonoBehaviour
             {
                 LoseGame();
             }
-
         }
     }
     public void HitBall()
@@ -94,5 +109,32 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         //handle losing the game
+    }
+
+    public void GivePowerup(int index, LastingPowerupType Powerup)
+    {
+        bool available = false;
+        foreach(LastingPowerupType power in unusedLingeringPowerups)
+        {
+            if(power == Powerup)
+            {
+                available= true;
+            }
+        }
+
+        if (available)
+        {
+            UsedPowerups[index] = Powerup;
+        }
+        
+    }
+
+    public void givePlayersPowerups()
+    {
+        GameObject.Find("Player 1").GetComponent<Players>().currentPowerup = UsedPowerups[0];
+        GameObject.Find("Player 2").GetComponent<Players>().currentPowerup = UsedPowerups[1];
+        GameObject.Find("Player 3").GetComponent<Players>().currentPowerup = UsedPowerups[2];
+        GameObject.Find("Player 4").GetComponent<Players>().currentPowerup = UsedPowerups[3];
+        GameObject.Find("Player 5").GetComponent<Players>().currentPowerup = UsedPowerups[4];
     }
 }
