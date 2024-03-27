@@ -67,7 +67,7 @@ public class BrickManagers : MonoBehaviour
             keysDestroyed++;
             if (keysDestroyed >= keys)
             {
-                //handle end of level here
+                FindObjectOfType<GameManager>().BeatLevel();
             }
         }
         Destroy(key);

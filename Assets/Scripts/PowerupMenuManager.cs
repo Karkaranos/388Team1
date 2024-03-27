@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PowerupMenuManager : MonoBehaviour
@@ -38,21 +39,36 @@ public class PowerupMenuManager : MonoBehaviour
 
     [SerializeField] powerUpIcon[] powerupIcons;
     [SerializeField] private powerUpIcon[] greyscaleIcons;
+
+    [SerializeField] private PlayerInput actionMap;
+    private InputAction back;
+
+    private GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
+
+        actionMap.currentActionMap.Enable();
+        back = actionMap.currentActionMap.FindAction("Back");
+        back.started += Back_started;
+
         defaultPowerupIcon = powerupDescriptionIcon.sprite;
         HoveringOverPowerup(0);
         UpdatePowerups();
     }
 
+    private void Back_started(InputAction.CallbackContext obj)
+    {
+        Back();
+    }
 
     private void UpdatePowerups()
     {
         for (int i = 0; i < powerupIcons.Length; i++)
         {
             //check to see if you have the powerup first
-            if (hasComet)
+            if (gm.unusedLingeringPowerups.Contains(GameManager.LastingPowerupType.Comet))
             {
                 powerups[i].GetComponent<Image>().sprite = powerupIcons[i].icon;
             }
@@ -61,11 +77,6 @@ public class PowerupMenuManager : MonoBehaviour
                 powerups[i].GetComponent<Image>().sprite = greyscaleIcons[i].icon;
             }
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void UnitSelected(int player)
@@ -110,12 +121,17 @@ public class PowerupMenuManager : MonoBehaviour
                     }
                 }
                 break;
+            default:
+                Debug.Log("Type is outside of enum range");
+                break;
         }
     }
 
     public void SelectedPowerup(GameManager.LastingPowerupType type)
     {
-        //set the currently selected player's current powerup to type
+        gm.GivePowerup(currentSelectedPlayer, type);
+        HoveringOverPowerup(0);
+        UpdatePowerups();
         Back();
     }
 
@@ -138,13 +154,11 @@ public class PowerupMenuManager : MonoBehaviour
 
     public void ClearPowerups()
     {
-        Debug.Log("Clearing all powerups");
-        //clear powerups code here
+        gm.ClearPowerups();
     }
 
     public void NextLevel()
     {
-        Debug.Log("Proceeding to next level");
-        //next level code here
+        gm.LeavePowerupMenu();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public int MaxHitCounter = 10;
     [HideInInspector] public int currentHitCounter = 0;
+
+    private List<bool> levelsCompleted;
 
 
 
@@ -27,13 +30,17 @@ public class GameManager : MonoBehaviour
         ExtraLife
     }
 
-    public List<LastingPowerupType> obtainedLingeringPowerups = new List<LastingPowerupType>();
     public List<LastingPowerupType> unusedLingeringPowerups = new List<LastingPowerupType>();
     public LastingPowerupType[] UsedPowerups = new LastingPowerupType[5];
 
 
-    private void awake()
+    private void Awake()
     {
+        //magic number is the number of non level scenes in the build
+        for (int i = 0; i < SceneManager.sceneCountInBuildSettings - 4; i++)
+        {
+            levelsCompleted.Add(false);
+        }
         GameObject[] managers = GameObject.FindGameObjectsWithTag("GameController");
         if(managers.Length > 1)
         {
@@ -73,15 +80,62 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void BeatLevel()
+    {
+        bool wonGame = false;
+        for (int i = 0; i < levelsCompleted.Count; i++)
+        {
+
+            if (levelsCompleted[i] == false)
+            {
+                if (i >= levelsCompleted.Count - 1)
+                {
+                    wonGame = true;
+                    break;
+                }
+
+                levelsCompleted[i] = true;
+                break;
+            }
+        }
+        if (wonGame)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
+       
+    }
+    public void LoseGame()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void LeavePowerupMenu()
+    {
+        int index = 3;
+        for (int i = 0; i < levelsCompleted.Count; i++)
+        {
+            if (levelsCompleted[i] == false)
+            {
+                index += i;
+                break;
+            }
+        }
+        SceneManager.LoadScene(index);
+    }
+
     public void ObtainedPowerup(LastingPowerupType type)
     {
         if (type != LastingPowerupType.None)
         {
-            //the limited use powerups
+            //the lasting use powerups
             if (type == LastingPowerupType.Comet)
             {
-                obtainedLingeringPowerups.Add(type);
-                obtainedLingeringPowerups.Sort();
+                unusedLingeringPowerups.Add(type);
+                unusedLingeringPowerups.Sort();
             }
         }
     }
@@ -106,10 +160,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void LoseGame()
-    {
-        //handle losing the game
-    }
+    
 
     public void GivePowerup(int index, LastingPowerupType Powerup)
     {
@@ -124,9 +175,28 @@ public class GameManager : MonoBehaviour
 
         if (available)
         {
+            if (UsedPowerups[index] != LastingPowerupType.None)
+            {
+                unusedLingeringPowerups.Add(UsedPowerups[index]);
+            }
+
             UsedPowerups[index] = Powerup;
+            unusedLingeringPowerups.Remove(Powerup);
         }
         
+    }
+
+    public void ClearPowerups()
+    {
+        for(int i = 0; i < UsedPowerups.Length; i++)
+        {
+            LastingPowerupType type = UsedPowerups[i];
+            if (type != LastingPowerupType.None)
+            {
+                unusedLingeringPowerups.Add(type);
+            }
+            UsedPowerups[i] = LastingPowerupType.None;
+        }
     }
 
     public void givePlayersPowerups()
