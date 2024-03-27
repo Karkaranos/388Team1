@@ -21,6 +21,9 @@ public class Sticks : MonoBehaviour
 
     public GameObject[] players;
 
+    public Vector2 resetPointTop;
+    public Vector2 resetPointBottom;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,22 +61,22 @@ public class Sticks : MonoBehaviour
         {
             if(transform.position.y > 2.7)
             {
-                transform.position = new Vector3(-6.7f,2.7f,0);
+                transform.position = resetPointTop;
             }
             else if (transform.position.y < -2.7)
             {
-                transform.position = new Vector3(-6.7f, -2.7f, 0);
+                transform.position = resetPointBottom;
             }
         }
         else
         {
             if(transform.position.y > 1.4)
             {
-                transform.position = new Vector3(-4.83f, 1.4f, 0);
+                transform.position = resetPointTop;
             }
             else if(transform.position.y < -1.4)
             {
-                transform.position = new Vector3(-4.83f, -1.4f, 0);
+                transform.position = resetPointBottom;
             }
         }
     }
