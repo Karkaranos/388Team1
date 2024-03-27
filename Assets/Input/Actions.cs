@@ -62,6 +62,15 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9014289-947e-49fe-aed8-180fa60eb7a9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -240,6 +249,17 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""action"": ""MoveLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37c5d678-6103-4f8a-b226-101a644f55c1"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -252,6 +272,7 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         m_Playing_MoveRight = m_Playing.FindAction("MoveRight", throwIfNotFound: true);
         m_Playing_AttackLeft = m_Playing.FindAction("AttackLeft", throwIfNotFound: true);
         m_Playing_AttackRight = m_Playing.FindAction("AttackRight", throwIfNotFound: true);
+        m_Playing_Back = m_Playing.FindAction("Back", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +338,7 @@ public partial class @Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Playing_MoveRight;
     private readonly InputAction m_Playing_AttackLeft;
     private readonly InputAction m_Playing_AttackRight;
+    private readonly InputAction m_Playing_Back;
     public struct PlayingActions
     {
         private @Actions m_Wrapper;
@@ -325,6 +347,7 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         public InputAction @MoveRight => m_Wrapper.m_Playing_MoveRight;
         public InputAction @AttackLeft => m_Wrapper.m_Playing_AttackLeft;
         public InputAction @AttackRight => m_Wrapper.m_Playing_AttackRight;
+        public InputAction @Back => m_Wrapper.m_Playing_Back;
         public InputActionMap Get() { return m_Wrapper.m_Playing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -346,6 +369,9 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @AttackRight.started += instance.OnAttackRight;
             @AttackRight.performed += instance.OnAttackRight;
             @AttackRight.canceled += instance.OnAttackRight;
+            @Back.started += instance.OnBack;
+            @Back.performed += instance.OnBack;
+            @Back.canceled += instance.OnBack;
         }
 
         private void UnregisterCallbacks(IPlayingActions instance)
@@ -362,6 +388,9 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @AttackRight.started -= instance.OnAttackRight;
             @AttackRight.performed -= instance.OnAttackRight;
             @AttackRight.canceled -= instance.OnAttackRight;
+            @Back.started -= instance.OnBack;
+            @Back.performed -= instance.OnBack;
+            @Back.canceled -= instance.OnBack;
         }
 
         public void RemoveCallbacks(IPlayingActions instance)
@@ -385,5 +414,6 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         void OnMoveRight(InputAction.CallbackContext context);
         void OnAttackLeft(InputAction.CallbackContext context);
         void OnAttackRight(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
     }
 }
