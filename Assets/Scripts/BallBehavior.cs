@@ -89,6 +89,7 @@ public class BallBehavior : MonoBehaviour
 
     public void StopBall(Vector2 hitPoint)
     {
+        gm.HitBall();
         rb.velocity = Vector2.zero;
         transform.position = new Vector2(hitPoint.x + 1f, hitPoint.y);
         Debug.Log("Stopped");
