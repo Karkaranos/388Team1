@@ -13,11 +13,13 @@ public class PowerupMenuManager : MonoBehaviour
     {
         public Sprite icon;
         public GameManager.LastingPowerupType type;
+        public TMP_Text text;
 
-        public powerUpIcon(Sprite icon, GameManager.LastingPowerupType type)
+        public powerUpIcon(Sprite icon, GameManager.LastingPowerupType type, TMP_Text text)
         {
             this.icon = icon;
             this.type = type;
+            this.text = text;
         }
     }
 
@@ -71,10 +73,20 @@ public class PowerupMenuManager : MonoBehaviour
             if (gm.unusedLingeringPowerups.Contains(GameManager.LastingPowerupType.Comet))
             {
                 powerups[i].GetComponent<Image>().sprite = powerupIcons[i].icon;
+                int count = 0;
+                foreach (GameManager.LastingPowerupType com in gm.unusedLingeringPowerups)
+                {
+                    if (com.Equals(GameManager.LastingPowerupType.Comet))
+                    {
+                        count++;
+                    }
+                }
+                powerupIcons[i].text.text = "x" + count;
             }
             else
             {
                 powerups[i].GetComponent<Image>().sprite = greyscaleIcons[i].icon;
+                greyscaleIcons[i].text.text = "x0";
             }
         }
     }
