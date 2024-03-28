@@ -35,6 +35,8 @@ public class BrickManagers : MonoBehaviour
             BrickBehavior bbehav = go.GetComponent<BrickBehavior>();
             bbehav.MakeBrick();
         }
+
+        FindObjectOfType<GameManager>().givePlayersPowerups();
     }
 
     public void SetKeyBricks(int count)

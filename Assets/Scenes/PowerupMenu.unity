@@ -1854,7 +1854,7 @@ MonoBehaviour:
   powerupDescriptionText: {fileID: 479360052}
   powerupDescriptionIcon: {fileID: 349778469}
   playerDescriptionIcon: {fileID: 1572755771}
-  currentSelectedPlayer: 0
+  currentSelectedPlayer: -1
   players:
   - {fileID: 1455693195}
   - {fileID: 549406128}
@@ -2989,12 +2989,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 677282562}
         m_TargetAssemblyTypeName: PowerupMenuManager, Assembly-CSharp
-        m_MethodName: Back
-        m_Mode: 1
+        m_MethodName: SelectedPowerup
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
