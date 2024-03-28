@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
 
     public void updateHits(int Hits)
     {
-        HitsText.GetComponent<TMP_Text>().text = "Hits: " + Hits;
+        HitsText.GetComponent<TMP_Text>().text = "Hits Remaining: " + Hits;
     }
 
     public void powerupObtained(string Power)

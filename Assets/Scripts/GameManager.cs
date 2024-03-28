@@ -151,7 +151,8 @@ public class GameManager : MonoBehaviour
             {
                 case LimitedPowerupType.ExtraLife:
                     PlayerLives++;
-                    GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().updateLives(PlayerLives);
+                    currentHitCounter -= 2;
+                    updateText();
                     GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().powerupObtained("Extra Life");
                     break;
                 case LimitedPowerupType.BiggerBall:
@@ -218,5 +219,14 @@ public class GameManager : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().updateHits(MaxHitCounter - currentHitCounter);
         GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().updateLives(PlayerLives);
+    }
+
+
+    public void RestartGame()
+    {
+        ClearPowerups();
+        unusedLingeringPowerups.Clear();
+        PlayerLives = 3;
+        currentHitCounter = 0;
     }
 }
