@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public bool LoseConditionIsPlayerLivesIfTrue = true;
+    public bool LoseConditionIsPlayerLivesIfTrue = false;
     public int PlayerLives = 3;
 
     public int MaxHitCounter = 10;
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<bool> levelsCompleted;
 
-
+    public bool ResetLivesAfterLevel;
 
     [HideInInspector] public enum LastingPowerupType
     {
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void LoseLife()
+    /*public void LoseLife()
     {
         if (LoseConditionIsPlayerLivesIfTrue)
         {
@@ -60,12 +60,12 @@ public class GameManager : MonoBehaviour
                 LoseGame();
             }
         }
-    }
+    }*/
     public void HitBall()
     {
 
-        if (!LoseConditionIsPlayerLivesIfTrue)
-        {
+        /*if (!LoseConditionIsPlayerLivesIfTrue)
+        {*/
             if (MaxHitCounter <= 0)
             {
                 Debug.Log("Max Hit Counter Cannot be less than zero");
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
                     LoseGame();
                 }
             }   
-        }
+       /* }*/
     }
 
     public void BeatLevel()
@@ -117,6 +117,10 @@ public class GameManager : MonoBehaviour
 
     public void LeavePowerupMenu()
     {
+        if (ResetLivesAfterLevel)
+        {
+            currentHitCounter = 0;
+        }
         int index = 4;
         for (int i = 0; i < levelsCompleted.Count; i++)
         {
@@ -228,5 +232,9 @@ public class GameManager : MonoBehaviour
         unusedLingeringPowerups.Clear();
         PlayerLives = 3;
         currentHitCounter = 0;
+        for (int i = 0; i < levelsCompleted.Count; i++)
+        {
+            levelsCompleted[i] = false;
+        }
     }
 }

@@ -467,7 +467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816787984397276469, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: heldLimitedPowerup
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8953150051979412958, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: m_Name
@@ -613,7 +613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816787984397276469, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: heldLastingPowerup
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8953150051979412958, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: m_Name
@@ -834,7 +834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816787984397276469, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: heldLimitedPowerup
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8953150051979412958, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: m_Name
@@ -1122,7 +1122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816787984397276469, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: heldLimitedPowerup
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8953150051979412958, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: m_Name
@@ -1908,7 +1908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816787984397276469, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: heldLastingPowerup
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8953150051979412958, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: m_Name
@@ -4596,7 +4596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816787984397276469, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: heldLastingPowerup
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8953150051979412958, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: m_Name
@@ -4671,7 +4671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816787984397276469, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: heldLimitedPowerup
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8953150051979412958, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: m_Name
@@ -7571,7 +7571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816787984397276469, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: heldLimitedPowerup
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8953150051979412958, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: m_Name
@@ -8070,7 +8070,8 @@ MonoBehaviour:
   keysDestroyed: 0
   bricksSpawned: 0
   keyBrickList: []
-  cometExplosionRadius: 0
+  lastingPowerups: 010000000100000001000000
+  limitedPowerups: 0100000001000000010000000200000002000000
 --- !u!4 &1791797984
 Transform:
   m_ObjectHideFlags: 0
@@ -8579,7 +8580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7816787984397276469, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: heldLimitedPowerup
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8953150051979412958, guid: c8dd0c2bd8db8b346a5dafd0c5b8aa60, type: 3}
       propertyPath: m_Name
