@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    /*public bool LoseConditionIsPlayerLivesIfTrue = true;*/
+    public bool LoseConditionIsPlayerLivesIfTrue = false;
     public int PlayerLives = 3;
 
     public int MaxHitCounter = 10;

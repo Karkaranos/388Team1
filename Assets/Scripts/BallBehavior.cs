@@ -53,7 +53,7 @@ public class BallBehavior : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Deathbox"))
         {
-            gm.LoseLife();
+            //gm.LoseLife();
             StopBall( new Vector2(-4.84f, 0));
         }
 
