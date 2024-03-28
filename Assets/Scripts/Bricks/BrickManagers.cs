@@ -17,8 +17,11 @@ public class BrickManagers : MonoBehaviour
     [SerializeField, Tooltip("used for checking how many bricks are spawned")] private int bricksSpawned;
     [SerializeField, Tooltip("list of key bricks")] private List<GameObject> keyBrickList;
 
-    [SerializeField, Tooltip("This is where you choose how big the comet's explosion is")]
-    private float cometExplosionRadius;
+
+    [SerializeField, Header("Powerups for the level"), Tooltip("Enter the lasting powerups for the level here")]
+    private List<GameManager.LastingPowerupType> lastingPowerups;
+    [SerializeField, Tooltip("Enter the limited powerups for the level")]
+    private List<GameManager.LimitedPowerupType> limitedPowerups;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +63,41 @@ public class BrickManagers : MonoBehaviour
             SetKeyBricks(count);
         }
         
+        foreach (GameManager.LastingPowerupType type in lastingPowerups)
+        {
+            bool found = false;
+            while (!found)
+            {
+                BrickBehavior behav = keyBrickList[Random.Range(0,
+                                keyBrickList.Count)].GetComponent<BrickBehavior>();
+
+                if (behav.heldLastingPowerup == GameManager.LastingPowerupType.None)
+                {
+                    behav.heldLastingPowerup = type;
+                    found = true;
+                }
+            }
+        }
+        foreach (GameManager.LimitedPowerupType type in limitedPowerups)
+        {
+            bool found = false;
+            while (!found)
+            {
+                BrickBehavior behav = bricks[Random.Range(0,
+                                bricks.Count)].GetComponent<BrickBehavior>();
+
+                if (behav.heldLimitedPowerup == GameManager.LimitedPowerupType.None &&
+                    behav.isKey == false)
+                {
+                    behav.heldLimitedPowerup = type;
+                    found = true;
+                }
+            }
+        }
     }
+
+
+    
 
     public void keyDestroyed(GameObject key)
     {
