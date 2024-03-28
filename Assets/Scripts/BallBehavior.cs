@@ -5,6 +5,19 @@ using UnityEngine;
 
 public class BallBehavior : MonoBehaviour
 {
+    [System.Serializable]
+    public class BallSprites
+    {
+        public Sprite sprite;
+        public GameManager.LastingPowerupType type;
+
+        public BallSprites(Sprite sprite, GameManager.LastingPowerupType type)
+        {
+            this.sprite = sprite;
+            this.type = type;
+        }
+    }
+
     private Rigidbody2D rb;
     private GameManager gm;
     public float moveSpeed;
@@ -16,6 +29,10 @@ public class BallBehavior : MonoBehaviour
     public GameManager.LastingPowerupType currentPowerup;
     public float cometExplosionRadius;
 
+    [SerializeField] BallSprites[] sprites;
+
+    
+
     //this is the number of big ball powerups the player currently has.
     //does not include the active big ball powerup if the player has one
     public int BigBallInventory;
@@ -24,7 +41,7 @@ public class BallBehavior : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         gm = FindObjectOfType<GameManager>();
-        Launch();
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -37,14 +54,14 @@ public class BallBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Deathbox"))
         {
             gm.LoseLife();
-            StopBall();
-            transform.position = Vector2.zero;
+            StopBall( new Vector2(-4.84f, 0));
         }
 
         if (collision.gameObject.CompareTag("Brick") && currentPowerup == GameManager.LastingPowerupType.Comet)
         {
             currentPowerup = GameManager.LastingPowerupType.None;
             Explode();
+            UpdateSprite();
         }
     }
 
@@ -96,13 +113,27 @@ public class BallBehavior : MonoBehaviour
         
     }
 
-    /*public void Kicked(GameManager.PowerupType type)
+    public void Kicked(GameManager.LastingPowerupType type)
     {
-        switch (type)
+        if (type != GameManager.LastingPowerupType.None)
         {
-
+            currentPowerup = type;
         }
-    }*/
+        UpdateSprite();
+    }
+
+    public void UpdateSprite()
+    {
+        foreach (BallSprites spr in sprites)
+        {
+            if (spr.type.Equals(currentPowerup))
+            {
+                GetComponent<SpriteRenderer>().sprite = spr.sprite;
+                break;
+            }
+        }
+    }
+
 
     public IEnumerator BigBall()
     {

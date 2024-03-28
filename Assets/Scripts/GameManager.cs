@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public int MaxHitCounter = 10;
     [HideInInspector] public int currentHitCounter = 0;
 
-    private List<bool> levelsCompleted;
+    [SerializeField] private List<bool> levelsCompleted;
 
 
 
@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
 
     public void LeavePowerupMenu()
     {
-        int index = 3;
+        int index = 4;
         for (int i = 0; i < levelsCompleted.Count; i++)
         {
             if (levelsCompleted[i] == false)

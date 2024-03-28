@@ -32,6 +32,6 @@ public class KickBox : MonoBehaviour
         kickDirection.Normalize();
         ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         ball.GetComponent<Rigidbody2D>().AddForce(kickDirection * KickStrength, ForceMode2D.Impulse);
-        ball.GetComponent<BallBehavior>().currentPowerup = Player.GetComponent<Players>().currentPowerup;
+        ball.GetComponent<BallBehavior>().Kicked(Player.GetComponent<Players>().currentPowerup);
     }
 }
