@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         if (LoseConditionIsPlayerLivesIfTrue)
         {
             PlayerLives--;
+            GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().updateLives(PlayerLives);
             if (PlayerLives <= 0)
             {
                 LoseGame();
@@ -72,6 +73,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 currentHitCounter++;
+                GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().updateHits(MaxHitCounter - currentHitCounter);
                 if (currentHitCounter >= MaxHitCounter)
                 {
                     LoseGame();
@@ -134,6 +136,7 @@ public class GameManager : MonoBehaviour
             //the lasting use powerups
             if (type == LastingPowerupType.Comet)
             {
+                GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().powerupObtained("Comet");
                 unusedLingeringPowerups.Add(type);
                 unusedLingeringPowerups.Sort();
             }
@@ -148,9 +151,12 @@ public class GameManager : MonoBehaviour
             {
                 case LimitedPowerupType.ExtraLife:
                     PlayerLives++;
+                    GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().updateLives(PlayerLives);
+                    GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().powerupObtained("Extra Life");
                     break;
                 case LimitedPowerupType.BiggerBall:
                     BallBehavior bBehav = FindObjectOfType<BallBehavior>();
+                    GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().powerupObtained("Bigger Ball");
                     bBehav.BigBallInventory++;
                     if (!bBehav.isBig)
                     {
@@ -206,5 +212,11 @@ public class GameManager : MonoBehaviour
         GameObject.Find("Player 3").GetComponent<Players>().currentPowerup = UsedPowerups[2];
         GameObject.Find("Player 4").GetComponent<Players>().currentPowerup = UsedPowerups[3];
         GameObject.Find("Player 5").GetComponent<Players>().currentPowerup = UsedPowerups[4];
+    }
+
+    public void updateText()
+    {
+        GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().updateHits(MaxHitCounter - currentHitCounter);
+        GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().updateLives(PlayerLives);
     }
 }
