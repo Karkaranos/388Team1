@@ -85,7 +85,7 @@ public class PowerupMenuManager : MonoBehaviour
         players[player].GetComponent<Image>().color = Color.red;
         //grab the powerup of the corresponding player
         //currently just sets to none
-        GameManager.LastingPowerupType powerup = GameManager.LastingPowerupType.None;
+        GameManager.LastingPowerupType powerup = FindObjectOfType<GameManager>().UsedPowerups[player];
         switch (powerup)
         {
             case GameManager.LastingPowerupType.None:
@@ -127,12 +127,18 @@ public class PowerupMenuManager : MonoBehaviour
         }
     }
 
-    public void SelectedPowerup(GameManager.LastingPowerupType type)
+    public void SelectedPowerup(int KindOfPowerup)
     {
-        gm.GivePowerup(currentSelectedPlayer, type);
-        HoveringOverPowerup(0);
-        UpdatePowerups();
-        Back();
+        GameManager.LastingPowerupType type = (GameManager.LastingPowerupType)KindOfPowerup;
+
+        if (currentSelectedPlayer >= 0 && currentSelectedPlayer <= 4)
+        {
+            gm.GivePowerup(currentSelectedPlayer, type);
+            HoveringOverPowerup(0);
+            UpdatePowerups();
+            Back();
+        }
+        
     }
 
     public void Back()
@@ -147,14 +153,15 @@ public class PowerupMenuManager : MonoBehaviour
                     playerDescriptionIcon.color = Color.white;
                 }
                 EventSystem.current.SetSelectedGameObject(players[0]);
-
+                currentSelectedPlayer = -1;
             }
         }
     }
 
     public void ClearPowerups()
-    {
+    { 
         gm.ClearPowerups();
+        UpdatePowerups();
     }
 
     public void NextLevel()
