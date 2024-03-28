@@ -1074,6 +1074,8 @@ MonoBehaviour:
   players:
   - {fileID: 963180408}
   - {fileID: 1420568301}
+  resetPointTop: {x: 0, y: 0}
+  resetPointBottom: {x: 0, y: 0}
 --- !u!212 &420902262
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1598,6 +1600,8 @@ MonoBehaviour:
   - {fileID: 404524421}
   - {fileID: 2004770556}
   - {fileID: 1736750108}
+  resetPointTop: {x: 0, y: 0}
+  resetPointBottom: {x: 0, y: 0}
 --- !u!212 &651263778
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2583,7 +2587,9 @@ MonoBehaviour:
   PlayerLives: 3
   MaxHitCounter: 10
   currentHitCounter: 0
-  obtainedLingeringPowerups: 
+  levelsCompleted: 
+  unusedLingeringPowerups: 
+  UsedPowerups: 0000000000000000000000000000000000000000
 --- !u!4 &1291535129
 Transform:
   m_ObjectHideFlags: 0
