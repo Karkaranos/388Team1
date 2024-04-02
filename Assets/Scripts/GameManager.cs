@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     public bool ResetLivesAfterLevel;
 
+    public bool hasBeenToPowerupMenu;
+
     [HideInInspector] public enum LastingPowerupType
     {
         None,
@@ -236,5 +238,6 @@ public class GameManager : MonoBehaviour
         {
             levelsCompleted[i] = false;
         }
+        hasBeenToPowerupMenu = false;
     }
 }
