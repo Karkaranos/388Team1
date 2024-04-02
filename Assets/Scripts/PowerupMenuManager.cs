@@ -46,6 +46,10 @@ public class PowerupMenuManager : MonoBehaviour
     private InputAction back;
 
     private GameManager gm;
+    [SerializeField] private GameObject startingButton;
+
+    [Header("Tutorial Parent Gameobjects")]
+    [SerializeField] private List<GameObject> tutorialGameobjects;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,13 +60,49 @@ public class PowerupMenuManager : MonoBehaviour
         back.started += Back_started;
 
         defaultPowerupIcon = powerupDescriptionIcon.sprite;
+
         HoveringOverPowerup(0);
         UpdatePowerups();
+
+        if (!gm.hasBeenToPowerupMenu)
+        {
+            LoadTutorial(0);
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(startingButton);
+        }
+        
     }
 
     private void Back_started(InputAction.CallbackContext obj)
     {
         Back();
+    }
+
+
+    public void HideTutorial(int current)
+    {
+        tutorialGameobjects[current].SetActive(false);
+    }
+
+    /// <summary>
+    /// This is split up with HideTutorial because buttons take only one parameter
+    /// </summary>
+    /// <param name="index"></param>
+    public void LoadTutorial(int index)
+    {
+        if (index >= tutorialGameobjects.Count)
+        {
+            EventSystem.current.SetSelectedGameObject(startingButton);
+            gm.hasBeenToPowerupMenu = true;
+        }
+        else
+        {
+            tutorialGameobjects[index].SetActive(true);
+            EventSystem.current.SetSelectedGameObject(FindChildWithTag(tutorialGameobjects[index], "StartingButton"));
+        }
+
     }
 
     private void UpdatePowerups()
@@ -179,5 +219,21 @@ public class PowerupMenuManager : MonoBehaviour
     public void NextLevel()
     {
         gm.LeavePowerupMenu();
+    }
+
+    private GameObject FindChildWithTag(GameObject parent, string tag)
+    {
+        GameObject child = null;
+
+        foreach (Transform go in parent.transform)
+        {
+            if (go.CompareTag(tag))
+            {
+                child = go.gameObject;
+                break;
+            }
+        }
+
+        return child;
     }
 }

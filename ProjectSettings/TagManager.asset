@@ -8,6 +8,7 @@ TagManager:
   - Deathbox
   - Brick
   - UIManager
+  - StartingButton
   layers:
   - Default
   - TransparentFX
