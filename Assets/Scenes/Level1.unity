@@ -4036,7 +4036,7 @@ MonoBehaviour:
   MaxHitCounter: 10
   currentHitCounter: 0
   levelsCompleted: 
-  ResetLivesAfterLevel: 0
+  ResetLivesAfterLevel: 1
   unusedLingeringPowerups: 
   UsedPowerups: 0000000000000000000000000000000000000000
 --- !u!4 &1291535129
