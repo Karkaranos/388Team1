@@ -31,6 +31,8 @@ public class BallBehavior : MonoBehaviour
     public LayerMask brickLayer;
     public GameManager.LastingPowerupType currentPowerup;
     public float cometExplosionRadius;
+    public int PierceNumber;
+    private int currentPierce;
 
     [SerializeField] BallSprites[] sprites;
 
@@ -148,7 +150,12 @@ public class BallBehavior : MonoBehaviour
         {
             currentPowerup = type;
         }
-        
+        if (currentPowerup == GameManager.LastingPowerupType.Piercing)
+        {
+            currentPierce = 0;
+            GetComponent<CircleCollider2D>().isTrigger = true;
+            GetComponent<SpriteRenderer>().color = Color.blue;
+        }
         UpdateSprite();
     }
 
@@ -163,7 +170,38 @@ public class BallBehavior : MonoBehaviour
             }
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WallPiercingTrigger") && currentPowerup == GameManager.LastingPowerupType.Piercing)
+        {
+            GetComponent<CircleCollider2D>().isTrigger = true;
+        }
+    }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WallPiercingTrigger"))
+        {
+            GetComponent<CircleCollider2D>().isTrigger = false;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+
+       if (collision.CompareTag("Brick") && currentPowerup == 
+            GameManager.LastingPowerupType.Piercing)
+       {
+            collision.GetComponent<BrickBehavior>().DestroyThisBrick();
+            currentPierce++;
+            if (currentPierce >= PierceNumber)
+            {
+                currentPowerup = GameManager.LastingPowerupType.None;
+                GetComponent<CircleCollider2D>().isTrigger = false;
+                GetComponent<SpriteRenderer>().color = Color.white;
+            }
+       } 
+    }
 
     public IEnumerator BigBall()
     {

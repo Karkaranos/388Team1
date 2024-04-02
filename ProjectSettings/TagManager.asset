@@ -9,6 +9,7 @@ TagManager:
   - Brick
   - UIManager
   - StartingButton
+  - WallPiercingTrigger
   layers:
   - Default
   - TransparentFX

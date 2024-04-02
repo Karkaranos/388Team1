@@ -163,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   isBig: 0
+  SaveBallTimer: 0
   BigBallTimer: 0
   BigBallMultiplier: 0
   brickLayer:
@@ -170,6 +171,7 @@ MonoBehaviour:
     m_Bits: 64
   currentPowerup: 0
   cometExplosionRadius: 1
+  PierceNumber: 2
   sprites:
   - sprite: {fileID: 21300000, guid: 7e1e0f1724d0d7142b704ebf4981c638, type: 3}
     type: 0
