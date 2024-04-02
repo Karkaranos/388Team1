@@ -17,17 +17,22 @@ public class GameManager : MonoBehaviour
 
     public bool ResetLivesAfterLevel;
 
+    public bool hasBeenToPowerupMenu;
+
     [HideInInspector] public enum LastingPowerupType
     {
         None,
-        Comet
+        Comet,
+        Piercing,
+        BiggerKickbox
     }
 
     [HideInInspector] public enum LimitedPowerupType
     {
         None,
         BiggerBall,
-        ExtraLife
+        ExtraLife,
+        SplitBall
     }
 
     public List<LastingPowerupType> unusedLingeringPowerups = new List<LastingPowerupType>();
@@ -236,5 +241,6 @@ public class GameManager : MonoBehaviour
         {
             levelsCompleted[i] = false;
         }
+        hasBeenToPowerupMenu = false;
     }
 }
