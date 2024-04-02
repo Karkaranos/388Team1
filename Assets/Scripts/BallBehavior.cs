@@ -22,8 +22,11 @@ public class BallBehavior : MonoBehaviour
     private GameManager gm;
     public float moveSpeed;
     public bool isBig;
+    public float SaveBallTimer;
     public float BigBallTimer;
     public float BigBallMultiplier;
+
+    Coroutine SaveBallInstance;
 
     public LayerMask brickLayer;
     public GameManager.LastingPowerupType currentPowerup;
@@ -48,20 +51,42 @@ public class BallBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            if (SaveBallInstance != null)
+            {
+                StopCoroutine(SaveBallInstance);
+            }
             StopBall(collision.transform.position);
         }
 
         if (collision.gameObject.CompareTag("Deathbox"))
         {
-            //gm.LoseLife();
+            if (SaveBallInstance != null)
+            {
+                StopCoroutine(SaveBallInstance);
+            }
+            gm.LoseLife();
             StopBall( new Vector2(-4.84f, 0));
         }
 
         if (collision.gameObject.CompareTag("Brick") && currentPowerup == GameManager.LastingPowerupType.Comet)
         {
+            if (SaveBallInstance != null)
+            {
+                StopCoroutine(SaveBallInstance);
+            }
+            SaveBallInstance = StartCoroutine("SaveBall");
             currentPowerup = GameManager.LastingPowerupType.None;
             Explode();
             UpdateSprite();
+        }
+
+        if (collision.gameObject.CompareTag("Brick"))
+        {
+            if (SaveBallInstance != null)
+            {
+                StopCoroutine(SaveBallInstance);
+            }
+            SaveBallInstance = StartCoroutine("SaveBall");
         }
     }
 
@@ -115,6 +140,11 @@ public class BallBehavior : MonoBehaviour
 
     public void Kicked(GameManager.LastingPowerupType type)
     {
+        if (SaveBallInstance != null)
+        {
+            StopCoroutine(SaveBallInstance);
+        }
+        SaveBallInstance = StartCoroutine("SaveBall");
         if (type != GameManager.LastingPowerupType.None)
         {
             currentPowerup = type;
@@ -147,5 +177,12 @@ public class BallBehavior : MonoBehaviour
         {
             StartCoroutine(BigBall());
         }
+    }
+
+    public IEnumerator SaveBall()
+    {
+        yield return new WaitForSeconds(SaveBallTimer);
+        Vector2 newForce = new Vector2(-3f, 0);
+        rb.AddForce(newForce, ForceMode2D.Force);
     }
 }
