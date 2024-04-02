@@ -22,14 +22,17 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public enum LastingPowerupType
     {
         None,
-        Comet
+        Comet,
+        Piercing,
+        BiggerKickbox
     }
 
     [HideInInspector] public enum LimitedPowerupType
     {
         None,
         BiggerBall,
-        ExtraLife
+        ExtraLife,
+        SplitBall
     }
 
     public List<LastingPowerupType> unusedLingeringPowerups = new List<LastingPowerupType>();

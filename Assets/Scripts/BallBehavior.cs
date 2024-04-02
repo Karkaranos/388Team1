@@ -148,6 +148,7 @@ public class BallBehavior : MonoBehaviour
         {
             currentPowerup = type;
         }
+        
         UpdateSprite();
     }
 
