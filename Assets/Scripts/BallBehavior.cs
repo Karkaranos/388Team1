@@ -64,7 +64,6 @@ public class BallBehavior : MonoBehaviour
             {
                 StopCoroutine(SaveBallInstance);
             }
-            gm.LoseLife();
             StopBall( new Vector2(-4.84f, 0));
         }
 
