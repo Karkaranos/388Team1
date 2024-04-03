@@ -25,6 +25,7 @@ public class BallBehavior : MonoBehaviour
     public float SaveBallTimer;
     public float BigBallTimer;
     public float BigBallMultiplier;
+    public bool hitplayer;
 
     Coroutine SaveBallInstance;
 
@@ -55,7 +56,7 @@ public class BallBehavior : MonoBehaviour
             {
                 StopCoroutine(SaveBallInstance);
             }
-            StopBall(collision.transform.position);
+            hitplayer = true;
         }
 
         if (collision.gameObject.CompareTag("Deathbox"))
@@ -86,6 +87,18 @@ public class BallBehavior : MonoBehaviour
                 StopCoroutine(SaveBallInstance);
             }
             SaveBallInstance = StartCoroutine("SaveBall");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("KickBox"))
+        {
+            if (hitplayer)
+            {
+                StopBall(collision.GetComponent<KickBox>().Player.transform.position);
+                hitplayer = false;
+            }
         }
     }
 
