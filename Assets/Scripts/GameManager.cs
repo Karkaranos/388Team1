@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     public bool ResetLivesAfterLevel;
 
     public bool hasBeenToPowerupMenu;
+
+    public GameObject ball;
 
     [HideInInspector] public enum LastingPowerupType
     {
@@ -152,7 +155,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ObtainedPowerup(LimitedPowerupType type)
+    public void ObtainedPowerup(LimitedPowerupType type, Vector3 go)
     {
         if (type != LimitedPowerupType.None)
         {
@@ -172,6 +175,16 @@ public class GameManager : MonoBehaviour
                     {
                         bBehav.StartCoroutine(bBehav.BigBall());
                     }
+                    break;
+                case LimitedPowerupType.SplitBall:
+                    BallBehavior currentBall = FindObjectOfType<BallBehavior>();
+
+                    GameObject b = Instantiate(ball, go, Quaternion.identity);
+                    
+
+                    Vector3 dir = currentBall.transform.position - b.transform.position;
+
+                    b.GetComponent<BallBehavior>().SplitBall(dir);
                     break;
             }
         }

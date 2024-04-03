@@ -24,7 +24,7 @@ public class BrickBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            DestroyThisBrick();
+            DestroyThisBrick(collision.transform.position);
         }
     }
 
@@ -41,18 +41,18 @@ public class BrickBehavior : MonoBehaviour
         gameObject.AddComponent<PolygonCollider2D>();
     }
 
-    public void DropPowerup()
+    public void DropPowerup(Vector3 go)
     {
 
         //handle dropping powerups here
         gm.ObtainedPowerup(heldLastingPowerup);
-        gm.ObtainedPowerup(heldLimitedPowerup);
+        gm.ObtainedPowerup(heldLimitedPowerup, go);
 
     }
 
-    public void DestroyThisBrick()
+    public void DestroyThisBrick(Vector3 go)
     {
-        DropPowerup();
+        DropPowerup(go);
         BM.keyDestroyed(gameObject);
     }
 }

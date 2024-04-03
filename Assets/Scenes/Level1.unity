@@ -4037,6 +4037,8 @@ MonoBehaviour:
   currentHitCounter: 0
   levelsCompleted: 
   ResetLivesAfterLevel: 1
+  hasBeenToPowerupMenu: 0
+  ball: {fileID: 8742949696750218872, guid: c3bc2a21c16972e439d5e60cb7d4e393, type: 3}
   unusedLingeringPowerups: 
   UsedPowerups: 0000000000000000000000000000000000000000
 --- !u!4 &1291535129

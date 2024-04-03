@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.XR.Oculus.Input;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class BallBehavior : MonoBehaviour
 {
@@ -25,6 +27,9 @@ public class BallBehavior : MonoBehaviour
     public float SaveBallTimer;
     public float BigBallTimer;
     public float BigBallMultiplier;
+    public bool IsSplitBall;
+    public float SplitBallTimerMax;
+    public float splitBallStrength;
 
     Coroutine SaveBallInstance;
 
@@ -96,7 +101,7 @@ public class BallBehavior : MonoBehaviour
         {
             if (col.gameObject.GetComponent<BrickBehavior>() != null)
             {
-                col.gameObject.GetComponent<BrickBehavior>().DestroyThisBrick();
+                col.gameObject.GetComponent<BrickBehavior>().DestroyThisBrick(transform.position);
             }
         }
 
@@ -164,7 +169,19 @@ public class BallBehavior : MonoBehaviour
         }
     }
 
+    public void SplitBall(Vector3 dir)
+    {
+        IsSplitBall = true;
+        StartCoroutine(SplitBallTimer());
+        GetComponent<SpriteRenderer>().color = Color.green;
+        GetComponent<Rigidbody2D>().AddForce(transform.right * splitBallStrength, ForceMode2D.Impulse);
+    }
 
+    private IEnumerator SplitBallTimer()
+    {
+        yield return new WaitForSecondsRealtime(SplitBallTimerMax);
+        Destroy(gameObject);
+    }
     public IEnumerator BigBall()
     {
         BigBallInventory--;
