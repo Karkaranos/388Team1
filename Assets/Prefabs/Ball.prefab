@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8359350336620103343}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +137,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: a115f855378d3aa46b605dec18d891a3, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -164,8 +164,11 @@ MonoBehaviour:
   moveSpeed: 10
   isBig: 0
   SaveBallTimer: 10
-  BigBallTimer: 0
-  BigBallMultiplier: 0
+  BigBallTimer: 3
+  BigBallMultiplier: 2
+  IsSplitBall: 0
+  SplitBallTimerMax: 5
+  splitBallStrength: 10
   brickLayer:
     serializedVersion: 2
     m_Bits: 64
