@@ -2588,6 +2588,8 @@ MonoBehaviour:
   MaxHitCounter: 10
   currentHitCounter: 0
   levelsCompleted: 
+  ResetLivesAfterLevel: 0
+  hasBeenToPowerupMenu: 0
   unusedLingeringPowerups: 
   UsedPowerups: 0000000000000000000000000000000000000000
 --- !u!4 &1291535129
@@ -3458,7 +3460,8 @@ MonoBehaviour:
   keysDestroyed: 0
   bricksSpawned: 0
   keyBrickList: []
-  cometExplosionRadius: 0
+  lastingPowerups: 
+  limitedPowerups: 
 --- !u!4 &1791797984
 Transform:
   m_ObjectHideFlags: 0
