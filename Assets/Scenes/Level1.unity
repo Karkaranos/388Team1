@@ -452,6 +452,8 @@ MonoBehaviour:
   ball: {fileID: 0}
   KickStrength: 5
   BiggerSize: {x: 2, y: 1.6}
+  OriginalColor: {r: 1, g: 1, b: 1, a: 0.14117648}
+  hitColor: {r: 1, g: 0, b: 0, a: 0.14117648}
 --- !u!61 &118018965
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1235,6 +1237,8 @@ MonoBehaviour:
   ball: {fileID: 0}
   KickStrength: 5
   BiggerSize: {x: 2, y: 1.6}
+  OriginalColor: {r: 1, g: 1, b: 1, a: 0.14117648}
+  hitColor: {r: 1, g: 0, b: 0, a: 0.14117648}
 --- !u!61 &335521988
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1920,6 +1924,8 @@ MonoBehaviour:
   ball: {fileID: 0}
   KickStrength: 5
   BiggerSize: {x: 2, y: 1.6}
+  OriginalColor: {r: 1, g: 1, b: 1, a: 0.14117648}
+  hitColor: {r: 1, g: 0, b: 0, a: 0.14117648}
 --- !u!61 &422141093
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3894,6 +3900,8 @@ MonoBehaviour:
   ball: {fileID: 0}
   KickStrength: 5
   BiggerSize: {x: 2, y: 1.6}
+  OriginalColor: {r: 1, g: 1, b: 1, a: 0.14117648}
+  hitColor: {r: 1, g: 0, b: 0, a: 0.14117648}
 --- !u!61 &1266882147
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4720,6 +4728,8 @@ MonoBehaviour:
   ball: {fileID: 0}
   KickStrength: 5
   BiggerSize: {x: 2, y: 1.6}
+  OriginalColor: {r: 1, g: 1, b: 1, a: 0.14117648}
+  hitColor: {r: 1, g: 0, b: 0, a: 0.14117648}
 --- !u!61 &1518003844
 BoxCollider2D:
   m_ObjectHideFlags: 0
