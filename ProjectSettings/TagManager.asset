@@ -10,6 +10,7 @@ TagManager:
   - UIManager
   - StartingButton
   - KickBox
+  - PierceWall
   layers:
   - Default
   - TransparentFX
