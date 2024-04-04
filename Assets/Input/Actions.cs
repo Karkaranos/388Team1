@@ -71,6 +71,24 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""abb379b0-a2db-45c4-a5b5-55cf9847546e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Quit"",
+                    ""type"": ""Button"",
+                    ""id"": ""f70dc0d2-7060-4fdb-8ec0-4ce17d42cbd9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -260,6 +278,28 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66b60725-5bfc-4564-ab8e-0339a24664be"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a0de5153-8e68-4021-9268-6631ad8a6aa8"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -273,6 +313,8 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         m_Playing_AttackLeft = m_Playing.FindAction("AttackLeft", throwIfNotFound: true);
         m_Playing_AttackRight = m_Playing.FindAction("AttackRight", throwIfNotFound: true);
         m_Playing_Back = m_Playing.FindAction("Back", throwIfNotFound: true);
+        m_Playing_Restart = m_Playing.FindAction("Restart", throwIfNotFound: true);
+        m_Playing_Quit = m_Playing.FindAction("Quit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -339,6 +381,8 @@ public partial class @Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Playing_AttackLeft;
     private readonly InputAction m_Playing_AttackRight;
     private readonly InputAction m_Playing_Back;
+    private readonly InputAction m_Playing_Restart;
+    private readonly InputAction m_Playing_Quit;
     public struct PlayingActions
     {
         private @Actions m_Wrapper;
@@ -348,6 +392,8 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         public InputAction @AttackLeft => m_Wrapper.m_Playing_AttackLeft;
         public InputAction @AttackRight => m_Wrapper.m_Playing_AttackRight;
         public InputAction @Back => m_Wrapper.m_Playing_Back;
+        public InputAction @Restart => m_Wrapper.m_Playing_Restart;
+        public InputAction @Quit => m_Wrapper.m_Playing_Quit;
         public InputActionMap Get() { return m_Wrapper.m_Playing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -372,6 +418,12 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @Back.started += instance.OnBack;
             @Back.performed += instance.OnBack;
             @Back.canceled += instance.OnBack;
+            @Restart.started += instance.OnRestart;
+            @Restart.performed += instance.OnRestart;
+            @Restart.canceled += instance.OnRestart;
+            @Quit.started += instance.OnQuit;
+            @Quit.performed += instance.OnQuit;
+            @Quit.canceled += instance.OnQuit;
         }
 
         private void UnregisterCallbacks(IPlayingActions instance)
@@ -391,6 +443,12 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @Back.started -= instance.OnBack;
             @Back.performed -= instance.OnBack;
             @Back.canceled -= instance.OnBack;
+            @Restart.started -= instance.OnRestart;
+            @Restart.performed -= instance.OnRestart;
+            @Restart.canceled -= instance.OnRestart;
+            @Quit.started -= instance.OnQuit;
+            @Quit.performed -= instance.OnQuit;
+            @Quit.canceled -= instance.OnQuit;
         }
 
         public void RemoveCallbacks(IPlayingActions instance)
@@ -415,5 +473,7 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         void OnAttackLeft(InputAction.CallbackContext context);
         void OnAttackRight(InputAction.CallbackContext context);
         void OnBack(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
+        void OnQuit(InputAction.CallbackContext context);
     }
 }
