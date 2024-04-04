@@ -8,10 +8,14 @@ using UnityEngine.SceneManagement;
 public class MenusManager : MonoBehaviour
 {
     public GameObject CreditsScreen;
+    public GameObject ControlsScreen;
     public PlayerInput ActionMap;
     public InputAction Back;
-    public GameObject StartButton;
+    public GameObject CreditsButton;
+    public GameObject ControlsButton;
     public GameObject BackButton;
+
+    public GameObject backButtonHowToPlay;
 
     private void Awake()
     {
@@ -25,6 +29,10 @@ public class MenusManager : MonoBehaviour
         if (CreditsScreen.activeInHierarchy == true)
         {
             LeaveCredits();
+        }
+        if (ControlsScreen.activeInHierarchy == true)
+        {
+            LeaveControls();
         }
     }
 
@@ -42,10 +50,19 @@ public class MenusManager : MonoBehaviour
         CreditsScreen.SetActive(true);
         EventSystem.current.SetSelectedGameObject(BackButton);
     }
-    
+    public void Controls()
+    {
+        ControlsScreen.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(backButtonHowToPlay);
+    }
+    public void LeaveControls()
+    {   
+        EventSystem.current.SetSelectedGameObject(ControlsButton);
+        ControlsScreen.SetActive(false);
+    }
     public void LeaveCredits()
     {
-        EventSystem.current.SetSelectedGameObject(StartButton);
+        EventSystem.current.SetSelectedGameObject(CreditsButton);
         CreditsScreen.SetActive(false);
     }
 
