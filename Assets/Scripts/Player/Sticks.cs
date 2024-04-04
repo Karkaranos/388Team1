@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Sticks : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Sticks : MonoBehaviour
     public InputAction MoveRight;
     public InputAction AttackLeft;
     public InputAction AttackRight;
+    private InputAction Restart;
+    private InputAction Quit;
 
     public PlayerInput MyPlayerInput;
     public Rigidbody2D MyRB;
@@ -33,6 +36,8 @@ public class Sticks : MonoBehaviour
         {
             AttackLeft = MyPlayerInput.currentActionMap.FindAction("AttackLeft");
             MoveLeft = MyPlayerInput.currentActionMap.FindAction("MoveLeft");
+            Restart = MyPlayerInput.currentActionMap.FindAction("Restart");
+            Quit = MyPlayerInput.currentActionMap.FindAction("Quit");
         }
         else
         {
@@ -45,6 +50,8 @@ public class Sticks : MonoBehaviour
             AttackLeft.started += Attack_L;
             MoveLeft.started += Move_L;
             MoveLeft.canceled += Stop_L;
+            Restart.started += Restart_started;
+            Quit.started += Quit_started;
         }
         else
         {
@@ -52,6 +59,16 @@ public class Sticks : MonoBehaviour
             MoveRight.started += Move_R;
             MoveRight.canceled += Stop_R;
         }
+    }
+
+    private void Quit_started(InputAction.CallbackContext obj)
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void Restart_started(InputAction.CallbackContext obj)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     // Update is called once per frame
