@@ -14,4 +14,9 @@ public class Players : MonoBehaviour
             KickBox.GetComponent<KickBox>().Kickball();
         }
     }
+
+    public void updateKickbox()
+    {
+        KickBox.GetComponent<KickBox>().MakeBigger();
+    }
 }

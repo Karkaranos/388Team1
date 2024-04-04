@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 132287951}
   m_Layer: 0
   m_Name: KickBox
-  m_TagString: Untagged
+  m_TagString: KickBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -376,6 +376,7 @@ MonoBehaviour:
   Player: {fileID: 246228463}
   ball: {fileID: 0}
   KickStrength: 5
+  BiggerSize: {x: 2, y: 1.6}
 --- !u!61 &132287952
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -481,8 +482,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132287950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.82, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.62, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.1414, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 246228467}
@@ -1854,7 +1855,7 @@ GameObject:
   - component: {fileID: 427633667}
   m_Layer: 0
   m_Name: KickBox
-  m_TagString: Untagged
+  m_TagString: KickBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1874,6 +1875,7 @@ MonoBehaviour:
   Player: {fileID: 1164515308}
   ball: {fileID: 0}
   KickStrength: 5
+  BiggerSize: {x: 2, y: 1.6}
 --- !u!61 &427633668
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1979,8 +1981,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427633666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.82, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.62, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.1414, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1164515312}
@@ -5851,7 +5853,7 @@ GameObject:
   - component: {fileID: 1419770536}
   m_Layer: 0
   m_Name: KickBox
-  m_TagString: Untagged
+  m_TagString: KickBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5871,6 +5873,7 @@ MonoBehaviour:
   Player: {fileID: 1303486200}
   ball: {fileID: 0}
   KickStrength: 5
+  BiggerSize: {x: 2, y: 1.6}
 --- !u!61 &1419770537
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5976,8 +5979,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419770535}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.82, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.62, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.1414, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1303486204}
@@ -5997,7 +6000,7 @@ GameObject:
   - component: {fileID: 1461113740}
   m_Layer: 0
   m_Name: KickBox
-  m_TagString: Untagged
+  m_TagString: KickBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6017,6 +6020,7 @@ MonoBehaviour:
   Player: {fileID: 703634927}
   ball: {fileID: 0}
   KickStrength: 5
+  BiggerSize: {x: 2, y: 1.6}
 --- !u!61 &1461113741
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6121,9 +6125,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1461113739}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.82, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.62, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.1414, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 703634932}
@@ -8858,7 +8862,7 @@ GameObject:
   - component: {fileID: 2126519050}
   m_Layer: 0
   m_Name: KickBox
-  m_TagString: Untagged
+  m_TagString: KickBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8878,6 +8882,7 @@ MonoBehaviour:
   Player: {fileID: 1931191537}
   ball: {fileID: 0}
   KickStrength: 5
+  BiggerSize: {x: 2, y: 1.6}
 --- !u!61 &2126519051
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8983,8 +8988,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126519049}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.82, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.62, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.1414, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1931191541}
