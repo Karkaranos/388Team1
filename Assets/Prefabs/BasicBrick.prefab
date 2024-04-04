@@ -100,5 +100,5 @@ MonoBehaviour:
   isKey: 0
   heldLastingPowerup: 0
   heldLimitedPowerup: 0
-  KeyBrickSprite: {fileID: 21300000, guid: 9be8a00e96ca69749b166988313d4721, type: 3}
-  NormalBrickSprite: {fileID: 21300000, guid: b81617602785834488139710eb253338, type: 3}
+  KeyBrickSprite: {fileID: 21300000, guid: 33e60f4a19b01324d8e13678a54e2150, type: 3}
+  NormalBrickSprite: {fileID: 21300000, guid: 9be8a00e96ca69749b166988313d4721, type: 3}

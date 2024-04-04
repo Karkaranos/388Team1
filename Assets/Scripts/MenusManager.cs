@@ -30,6 +30,10 @@ public class MenusManager : MonoBehaviour
 
     public void StartGame()
     {
+        if(GameObject.FindGameObjectWithTag("GameController") != null)
+        {
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().RestartGame();
+        }
         SceneManager.LoadScene(4);
     }
 
