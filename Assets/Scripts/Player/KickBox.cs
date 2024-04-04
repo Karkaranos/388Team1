@@ -20,7 +20,7 @@ public class KickBox : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Ball")
+        if (collision.gameObject.tag == "Ball")
         {
             Player.gameObject.GetComponent<Players>().Kickable = false;
             ball = null;

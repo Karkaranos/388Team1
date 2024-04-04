@@ -152,6 +152,18 @@ public class GameManager : MonoBehaviour
                 unusedLingeringPowerups.Add(type);
                 unusedLingeringPowerups.Sort();
             }
+            else if(type == LastingPowerupType.Piercing)
+            {
+                GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().powerupObtained("Piercing");
+                unusedLingeringPowerups.Add(type);
+                unusedLingeringPowerups.Sort();
+            }
+            else if(type == LastingPowerupType.BiggerKickbox)
+            {
+                GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().powerupObtained("Bigger KickBox");
+                unusedLingeringPowerups.Add(type);
+                unusedLingeringPowerups.Sort();
+            }
         }
     }
 
@@ -178,7 +190,7 @@ public class GameManager : MonoBehaviour
                     break;
                 case LimitedPowerupType.SplitBall:
                     BallBehavior currentBall = FindObjectOfType<BallBehavior>();
-
+                    GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().powerupObtained("Split Ball");
                     GameObject b = Instantiate(ball, go, Quaternion.identity);
                     
 
@@ -231,10 +243,30 @@ public class GameManager : MonoBehaviour
     public void givePlayersPowerups()
     {
         GameObject.Find("Player 1").GetComponent<Players>().currentPowerup = UsedPowerups[0];
+        if (UsedPowerups[0] == LastingPowerupType.BiggerKickbox)
+        {
+            GameObject.Find("Player 1").GetComponent<Players>().updateKickbox();
+        }
         GameObject.Find("Player 2").GetComponent<Players>().currentPowerup = UsedPowerups[1];
+        if (UsedPowerups[1] == LastingPowerupType.BiggerKickbox)
+        {
+            GameObject.Find("Player 2").GetComponent<Players>().updateKickbox();
+        }
         GameObject.Find("Player 3").GetComponent<Players>().currentPowerup = UsedPowerups[2];
+        if (UsedPowerups[2] == LastingPowerupType.BiggerKickbox)
+        {
+            GameObject.Find("Player 3").GetComponent<Players>().updateKickbox();
+        }
         GameObject.Find("Player 4").GetComponent<Players>().currentPowerup = UsedPowerups[3];
+        if (UsedPowerups[3] == LastingPowerupType.BiggerKickbox)
+        {
+            GameObject.Find("Player 4").GetComponent<Players>().updateKickbox();
+        }
         GameObject.Find("Player 5").GetComponent<Players>().currentPowerup = UsedPowerups[4];
+        if (UsedPowerups[4] == LastingPowerupType.BiggerKickbox)
+        {
+            GameObject.Find("Player 5").GetComponent<Players>().updateKickbox();
+        }
     }
 
     public void updateText()
