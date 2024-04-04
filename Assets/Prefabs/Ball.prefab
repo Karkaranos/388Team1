@@ -169,6 +169,7 @@ MonoBehaviour:
   IsSplitBall: 0
   SplitBallTimerMax: 5
   splitBallStrength: 10
+  hitplayer: 0
   brickLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -179,4 +180,6 @@ MonoBehaviour:
     type: 0
   - sprite: {fileID: 21300000, guid: b8f8516a7485a9446b84057acb53f710, type: 3}
     type: 1
+  - sprite: {fileID: 21300000, guid: 12ee87cd78a2ce141a1a2cdb5c687a37, type: 3}
+    type: 2
   BigBallInventory: 0
