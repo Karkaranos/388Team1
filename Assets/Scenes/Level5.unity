@@ -3861,8 +3861,8 @@ MonoBehaviour:
   keysDestroyed: 0
   bricksSpawned: 0
   keyBrickList: []
-  lastingPowerups: 
-  limitedPowerups: 
+  lastingPowerups: 0100000002000000
+  limitedPowerups: 0300000002000000
 --- !u!4 &812848861
 Transform:
   m_ObjectHideFlags: 0
