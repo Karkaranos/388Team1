@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using Unity.XR.Oculus.Input;
 using UnityEngine;
 using UnityEngine.U2D;
+using UnityEngine.UI;
 
 public class BallBehavior : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class BallBehavior : MonoBehaviour
     public LayerMask brickLayer;
     public GameManager.LastingPowerupType currentPowerup;
     public float cometExplosionRadius;
+    public int PierceNumber;
+    private int currentPierce;
 
     [SerializeField] BallSprites[] sprites;
 
@@ -73,7 +76,8 @@ public class BallBehavior : MonoBehaviour
             StopBall( new Vector2(-4.84f, 0));
         }
 
-        if (collision.gameObject.CompareTag("Brick") && currentPowerup == GameManager.LastingPowerupType.Comet)
+        if (collision.gameObject.CompareTag("Brick") && currentPowerup 
+            == GameManager.LastingPowerupType.Comet)
         {
             if (SaveBallInstance != null)
             {
@@ -94,22 +98,10 @@ public class BallBehavior : MonoBehaviour
             SaveBallInstance = StartCoroutine("SaveBall");
         }
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("KickBox"))
-        {
-            if (hitplayer)
-            {
-                StopBall(collision.GetComponent<KickBox>().Player.transform.position);
-                hitplayer = false;
-            }
-        }
-    }
-
     public void Explode()
     {
-        Collider2D[] bricksToExplode = Physics2D.OverlapCircleAll(transform.position, cometExplosionRadius, brickLayer);
+        Collider2D[] bricksToExplode = 
+            Physics2D.OverlapCircleAll(transform.position, cometExplosionRadius, brickLayer);
         foreach (Collider2D col in bricksToExplode)
         {
             if (col.gameObject.GetComponent<BrickBehavior>() != null)
@@ -143,7 +135,8 @@ public class BallBehavior : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         Debug.Log("Stopped");
-
+        currentPowerup = GameManager.LastingPowerupType.None;
+        UpdateSprite();
     }
 
     public void StopBall(Vector2 hitPoint)
@@ -152,7 +145,9 @@ public class BallBehavior : MonoBehaviour
         rb.velocity = Vector2.zero;
         transform.position = new Vector2(hitPoint.x + 1f, hitPoint.y);
         Debug.Log("Stopped");
-        
+        currentPowerup = GameManager.LastingPowerupType.None;
+        UpdateSprite();
+
     }
 
     public void Kicked(GameManager.LastingPowerupType type)
@@ -165,6 +160,11 @@ public class BallBehavior : MonoBehaviour
         if (type != GameManager.LastingPowerupType.None)
         {
             currentPowerup = type;
+        }
+        if (currentPowerup == GameManager.LastingPowerupType.Piercing)
+        {
+            currentPierce = 0;
+            GetComponent<CircleCollider2D>().isTrigger = true;
         }
         
         UpdateSprite();
@@ -181,7 +181,45 @@ public class BallBehavior : MonoBehaviour
             }
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("KickBox"))
+        {
+            if (hitplayer)
+            {
+                StopBall(collision.GetComponent<KickBox>().Player.transform.position);
+                hitplayer = false;
+            }
+        }
 
+        if ((collision.CompareTag("PierceWall") || collision.CompareTag("KickBox"))&& currentPowerup == 
+                GameManager.LastingPowerupType.Piercing) {
+            GetComponent<CircleCollider2D>().isTrigger = true;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PierceWall") || collision.CompareTag("KickBox"))
+        {
+            GetComponent<CircleCollider2D>().isTrigger = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Brick") && currentPowerup == 
+            GameManager.LastingPowerupType.Piercing)
+        {
+            collision.GetComponent<BrickBehavior>().DestroyThisBrick(transform.position);
+            currentPierce++;
+            if (currentPierce >= PierceNumber)
+            {
+                currentPowerup = GameManager.LastingPowerupType.None;
+                GetComponent<CircleCollider2D>().isTrigger = false;
+                UpdateSprite();
+            }
+        }
+    }
     public void SplitBall(Vector3 dir)
     {
         IsSplitBall = true;
