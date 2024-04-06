@@ -18,11 +18,18 @@ public class BrickManagerEditor : Editor
     {
         base.OnInspectorGUI();
 
-        if (GUILayout.Button("Get Powerup"))
+        if (GUILayout.Button("Get Comet"))
         {
             FindObjectOfType<GameManager>().ObtainedPowerup(GameManager.LastingPowerupType.Comet);
         }
-
+        if (GUILayout.Button("Get Pierce"))
+        {
+            FindObjectOfType<GameManager>().ObtainedPowerup(GameManager.LastingPowerupType.Piercing);
+        }
+        if (GUILayout.Button("Get Kickbox"))
+        {
+            FindObjectOfType<GameManager>().ObtainedPowerup(GameManager.LastingPowerupType.BiggerKickbox);
+        }
         if (GUILayout.Button("Next Level"))
         {
             FindObjectOfType<GameManager>().BeatLevel();

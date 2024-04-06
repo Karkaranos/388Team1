@@ -110,13 +110,13 @@ public class PowerupMenuManager : MonoBehaviour
         for (int i = 0; i < powerupIcons.Length; i++)
         {
             //check to see if you have the powerup first
-            if (gm.unusedLingeringPowerups.Contains(GameManager.LastingPowerupType.Comet))
+            if (gm.unusedLingeringPowerups.Contains(powerupIcons[i].type))
             {
                 powerups[i].GetComponent<Image>().sprite = powerupIcons[i].icon;
                 int count = 0;
                 foreach (GameManager.LastingPowerupType com in gm.unusedLingeringPowerups)
                 {
-                    if (com.Equals(GameManager.LastingPowerupType.Comet))
+                    if (com.Equals(powerupIcons[i].type))
                     {
                         count++;
                     }
@@ -137,6 +137,14 @@ public class PowerupMenuManager : MonoBehaviour
         players[player].GetComponent<Image>().color = Color.red;
         //grab the powerup of the corresponding player
         //currently just sets to none
+        
+
+        playerDescriptionIcon.color = Color.red;
+
+        EventSystem.current.SetSelectedGameObject(powerups[0]);
+    }
+    public void HoveringOverPlayer(int player)
+    {
         GameManager.LastingPowerupType powerup = FindObjectOfType<GameManager>().UsedPowerups[player];
         switch (powerup)
         {
@@ -147,36 +155,51 @@ public class PowerupMenuManager : MonoBehaviour
                 unitText.text = "Comet Powerup: Destroys bricks in an explosion around it when" +
                     "it hits a brick.";
                 break;
+            case GameManager.LastingPowerupType.Piercing:
+                unitText.text = "Piercing Powerup: Pierces through bricks";
+                break;
+            case GameManager.LastingPowerupType.BiggerKickbox:
+                unitText.text = "Kickbox Powerup: Gives this player a bigger kick box";
+                break;
         }
-
-        playerDescriptionIcon.color = Color.red;
-
-        EventSystem.current.SetSelectedGameObject(powerups[0]);
     }
-
     public void HoveringOverPowerup(int type)
     {
-        switch ((GameManager.LastingPowerupType)type)
+        if ((GameManager.LastingPowerupType)type == GameManager.LastingPowerupType.None)
         {
-            case GameManager.LastingPowerupType.None:
-                powerupDescriptionText.text = "No Powerup Selected";
-                powerupDescriptionIcon.sprite = defaultPowerupIcon;
-                break;
-            case GameManager.LastingPowerupType.Comet:
-                powerupDescriptionText.text = "Comet Powerup: Destroys bricks in an explosion around it when" +
-                    "it hits a brick.";
-                for (int i = 0; i < powerupIcons.Length; i++)
-                {
-                    if (powerupIcons[i].type == GameManager.LastingPowerupType.Comet)
-                    {
-                        powerupDescriptionIcon.sprite = powerupIcons[i].icon;
-                    }
-                }
-                break;
-            default:
-                Debug.Log("Type is outside of enum range");
-                break;
+            powerupDescriptionText.text = "No Powerup Selected";
+            powerupDescriptionIcon.sprite = defaultPowerupIcon;
         }
+        else
+        {
+            switch ((GameManager.LastingPowerupType)type)
+            {
+                case GameManager.LastingPowerupType.None:
+                    Debug.Log("None check didnt work");
+                    break;
+                case GameManager.LastingPowerupType.Comet:
+                    powerupDescriptionText.text = "Comet Powerup: Destroys bricks in an explosion around it when" +
+                        "it hits a brick.";
+                    break;
+                case GameManager.LastingPowerupType.Piercing:
+                    powerupDescriptionText.text = "Piercing Powerup: Pierces through bricks";
+                    break;
+                case GameManager.LastingPowerupType.BiggerKickbox:
+                    powerupDescriptionText.text = "Kickbox Powerup: Gives this player a bigger kick box";
+                    break;
+                default:
+                    Debug.Log("Type is outside of enum range");
+                    break;
+            }
+            for (int i = 0; i < powerupIcons.Length; i++)
+            {
+                if (powerupIcons[i].type == (GameManager.LastingPowerupType)type)
+                {
+                    powerupDescriptionIcon.sprite = powerupIcons[i].icon;
+                }
+            }
+        }
+        
     }
 
     public void SelectedPowerup(int KindOfPowerup)
