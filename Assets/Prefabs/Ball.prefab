@@ -170,6 +170,7 @@ MonoBehaviour:
   SplitBallTimerMax: 5
   splitBallStrength: 10
   hitplayer: 0
+  Explosion: {fileID: 7573535364233703289, guid: 0c8e4d65e69fc4e46a1775ec3c3da860, type: 3}
   brickLayer:
     serializedVersion: 2
     m_Bits: 64

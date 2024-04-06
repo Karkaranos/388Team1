@@ -6789,6 +6789,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8359350336620103343, guid: c3bc2a21c16972e439d5e60cb7d4e393, type: 3}
+      propertyPath: Explosion
+      value: 
+      objectReference: {fileID: 7573535364233703289, guid: 0c8e4d65e69fc4e46a1775ec3c3da860, type: 3}
+    - target: {fileID: 8359350336620103343, guid: c3bc2a21c16972e439d5e60cb7d4e393, type: 3}
       propertyPath: moveSpeed
       value: 15
       objectReference: {fileID: 0}

@@ -33,6 +33,8 @@ public class BallBehavior : MonoBehaviour
     public float splitBallStrength;
     public bool hitplayer;
 
+    public GameObject Explosion;
+
     Coroutine SaveBallInstance;
 
     public LayerMask brickLayer;
@@ -102,6 +104,7 @@ public class BallBehavior : MonoBehaviour
     {
         Collider2D[] bricksToExplode = 
             Physics2D.OverlapCircleAll(transform.position, cometExplosionRadius, brickLayer);
+        Instantiate(Explosion, transform.position, Quaternion.identity);
         foreach (Collider2D col in bricksToExplode)
         {
             if (col.gameObject.GetComponent<BrickBehavior>() != null)
