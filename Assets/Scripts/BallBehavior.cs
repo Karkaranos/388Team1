@@ -254,7 +254,7 @@ public class BallBehavior : MonoBehaviour
     public IEnumerator SaveBall()
     {
         yield return new WaitForSeconds(SaveBallTimer);
-        Vector2 newForce = new Vector2(-3f, 0);
+        Vector2 newForce = new Vector2(-10f, 0);
         rb.AddForce(newForce, ForceMode2D.Force);
     }
 }
