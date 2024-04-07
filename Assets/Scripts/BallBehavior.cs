@@ -173,12 +173,15 @@ public class BallBehavior : MonoBehaviour
 
     public void UpdateSprite()
     {
-        foreach (BallSprites spr in sprites)
+        if (!IsSplitBall)
         {
-            if (spr.type.Equals(currentPowerup))
+            foreach (BallSprites spr in sprites)
             {
-                GetComponent<SpriteRenderer>().sprite = spr.sprite;
-                break;
+                if (spr.type.Equals(currentPowerup))
+                {
+                    GetComponent<SpriteRenderer>().sprite = spr.sprite;
+                    break;
+                }
             }
         }
     }

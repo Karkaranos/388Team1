@@ -177,7 +177,7 @@ public class GameManager : MonoBehaviour
                     PlayerLives++;
                     currentHitCounter -= 2;
                     updateText();
-                    GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().powerupObtained("Extra Life");
+                    GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().powerupObtained("Extra Hold");
                     break;
                 case LimitedPowerupType.BiggerBall:
                     BallBehavior bBehav = FindObjectOfType<BallBehavior>();
