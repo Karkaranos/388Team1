@@ -3610,7 +3610,7 @@ GameObject:
   - component: {fileID: 1077453746}
   m_Layer: 0
   m_Name: back
-  m_TagString: StartingButton
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4264,8 +4264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Here is where your hard-fought power-ups have carried over and are ready
-    to be assigned to your fighters! '
+  m_text: This is where you can assign your hard-fought powerups to your fighters!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4448,7 +4447,7 @@ GameObject:
   - component: {fileID: 1191560352}
   m_Layer: 0
   m_Name: back
-  m_TagString: StartingButton
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5085,7 +5084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 175, y: 104}
+  m_AnchoredPosition: {x: 175, y: 92}
   m_SizeDelta: {x: 434.0646, y: 127.5245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1297125712
@@ -5108,8 +5107,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "First, choose a fighter you would like to assign a power-up to, if you\u2019d
-    like to skip this section press \u201CNext\u201D"
+  m_text: First, choose the fighter you would like to assign a power-up to.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5136,8 +5134,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 32.01
+  m_fontSizeBase: 32.01
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5307,7 +5305,7 @@ GameObject:
   - component: {fileID: 1423053637}
   m_Layer: 0
   m_Name: next
-  m_TagString: Untagged
+  m_TagString: StartingButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6633,7 +6631,7 @@ GameObject:
   - component: {fileID: 1746513311}
   m_Layer: 0
   m_Name: next
-  m_TagString: Untagged
+  m_TagString: StartingButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7606,8 +7604,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Now, choose which power-up to assign to your chosen fighter, if you chose
-    any.
+  m_text: Now, choose which power-up to assign to your chosen fighter, if any.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

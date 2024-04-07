@@ -392,7 +392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Right Trigger
+  m_text: Left / Right Trigger
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1426,7 +1426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 207, y: 146.04147}
+  m_AnchoredPosition: {x: 195.4, y: 146.04147}
   m_SizeDelta: {x: 393.128, y: 40.2512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &722741443
@@ -1483,7 +1483,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2075,7 +2075,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 199.325, y: 95.976364}
+  m_AnchoredPosition: {x: 195.4, y: 95.976364}
   m_SizeDelta: {x: 393.128, y: 40.2512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &863417287
@@ -2132,7 +2132,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2344,7 +2344,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 199.32504, y: 44.022064}
+  m_AnchoredPosition: {x: 195.4, y: 44.022064}
   m_SizeDelta: {x: 393.128, y: 40.2512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &892178479
@@ -2401,7 +2401,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2858,7 +2858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200.07918, y: 146.04147}
+  m_AnchoredPosition: {x: -208, y: 146.04147}
   m_SizeDelta: {x: 291.5742, y: 40.2513}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1046562177
@@ -3059,7 +3059,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Progress through the levels by collecting different power-ups and destroying
-    knights with your bouncing fireball.
+    wizards with your bouncing fireball.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
