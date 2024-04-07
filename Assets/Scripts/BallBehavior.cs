@@ -32,6 +32,7 @@ public class BallBehavior : MonoBehaviour
     public float SplitBallTimerMax;
     public float splitBallStrength;
     public bool hitplayer;
+    public Sprite SplitBallSprite;
 
     public GameObject Explosion;
 
@@ -227,7 +228,7 @@ public class BallBehavior : MonoBehaviour
     {
         IsSplitBall = true;
         StartCoroutine(SplitBallTimer());
-        GetComponent<SpriteRenderer>().color = Color.green;
+        GetComponent<SpriteRenderer>().sprite = SplitBallSprite;
         GetComponent<Rigidbody2D>().AddForce(transform.right * splitBallStrength, ForceMode2D.Impulse);
     }
 

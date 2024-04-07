@@ -6801,6 +6801,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8359350336620103343, guid: c3bc2a21c16972e439d5e60cb7d4e393, type: 3}
+      propertyPath: SplitBallSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aaedeb7f6db263b4da3bf77fe31b846d, type: 3}
+    - target: {fileID: 8359350336620103343, guid: c3bc2a21c16972e439d5e60cb7d4e393, type: 3}
       propertyPath: BigBallMultiplier
       value: 2
       objectReference: {fileID: 0}
