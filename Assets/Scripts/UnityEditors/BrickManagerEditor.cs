@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -35,4 +35,4 @@ public class BrickManagerEditor : Editor
             FindObjectOfType<GameManager>().BeatLevel();
         }
     }
-}
+}*/
