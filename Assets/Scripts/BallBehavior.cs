@@ -161,10 +161,7 @@ public class BallBehavior : MonoBehaviour
             StopCoroutine(SaveBallInstance);
         }
         SaveBallInstance = StartCoroutine("SaveBall");
-        if (type != GameManager.LastingPowerupType.None)
-        {
-            currentPowerup = type;
-        }
+        currentPowerup = type;
         if (currentPowerup == GameManager.LastingPowerupType.Piercing)
         {
             currentPierce = 0;
