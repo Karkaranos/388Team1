@@ -15,8 +15,6 @@ public class KickBox : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            
-            GetComponent<SpriteRenderer>().color = new Color(0, 255, 0, 125);
             Player.gameObject.GetComponent<Players>().Kickable = true;
             ball = collision.gameObject;
         }
@@ -26,7 +24,6 @@ public class KickBox : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 36);
             Player.gameObject.GetComponent<Players>().Kickable = false;
             ball = null;
         }
